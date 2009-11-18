@@ -1,7 +1,0 @@
-#user-navigation      
-  - if current_user
-    = "Logged-in as #{current_user.email}"
-    |
-    = link_to "Edit profile", edit_user_path(current_user)
-    |
-    = link_to "Logout", logout_path

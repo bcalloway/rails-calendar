@@ -2,6 +2,8 @@ require 'icalendar'
 
 class CalendarsController < ApplicationController
   
+  layout 'admin'
+  
   def index
     @calendars = Calendar.all_events(params[:page])
 

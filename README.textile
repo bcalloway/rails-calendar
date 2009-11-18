@@ -4,17 +4,36 @@ A Rails plugin that creates the ability to add specific events to a calendar and
 
 NOTE:  This is a work in progress and currently exists as a set of sample files to add to an existing project.  A gem might be created in he future.
 
-h3.  Requirements
+h3. Features
+
+* Add/Edit/Delete calendar event for a specific date or date range
+* Assign calendar event to a category (program)
+* Add/Edit/Delete categories (programs)
+* Export calendar events as an iCal file
+* Subscribe to entire calendar
+* Subscribe to a specific category or categories
+
+h3. What's Included
+
+* jRails jQuery javascript libraries
+* SASS stylesheets for skinning the backend and frontend of the calendar
+* Admin and Application layouts
+* Supporting images for the tool
+* Database migration file
+* All necessary models, controllers, and helpers
+* All necessary views
+
+h3. Requirements
 
 *Gems*
-* RedCloth
-* will_paginate
-* haml
-* formtastic
-* searchlogic
-* icalendar
+* RedCloth, "http://redcloth.org":http://redcloth.org
+* will_paginate, "http://github.com/mislav/will_paginate":http://github.com/mislav/will_paginate
+* haml, "http://haml-lang.com":http://haml-lang.com
+* formtastic, "http://github.com/justinfrench/formtastic":http://github.com/justinfrench/formtastic
+* searchlogic, "http://github.com/binarylogic/searchlogic":http://github.com/binarylogic/searchlogic
+* icalendar, "http://icalendar.rubyforge.org":http://icalendar.rubyforge.org
 
-Be sure to vendor the following gems by inserting these lines into your envrironment.rb file:
+Be sure to vendor the following gems by inserting these lines into your environment.rb file:
 <pre><code>
   config.gem 'RedCloth',
              :lib => 'redcloth' 
@@ -37,12 +56,17 @@ Then run
   rake gems:unpack
 </code></pre>
 
+To setup formtastic, be sure to run the following generator:
+<pre><code>
+  script/generate formtastic
+</code></pre>
+
 *Plugins*
 * calendar_helper
 
 Run <code>script/plugin install git://github.com/topfunky/calendar_helper.git</code>
 
-h3.  Routes
+h3. Routes
 
 Add these to routes.rb
 <pre><code>

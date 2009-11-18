@@ -1,5 +1,7 @@
 class ProgramsController < ApplicationController
   
+  layout 'admin'
+  
   def index
     @programs = Program.all
 
