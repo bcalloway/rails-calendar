@@ -1,0 +1,27 @@
+= render :partial => '/calendars/secondary_nav'
+
+.tertiary-navigation
+  %ul
+    %li
+      = link_to 'Add New Event', "/calendars/new"
+
+  //TODO Add filter by program and filter by type
+
+%h1
+  Current Events
+  
+= will_paginate @calendars
+
+%table.table
+  - @calendars.each do |calendar|
+    %tr
+      %td
+        %strong
+          = h "#{calendar.start_date.strftime('%B %d, %Y')}"
+        = h "#{calendar.event}"
+      %td
+        = link_to 'Show', calendar
+        |
+        = link_to 'Edit', edit_calendar_path(calendar)
+        |
+        = link_to 'Destroy', calendar, :confirm => 'Are you sure?', :method => :delete

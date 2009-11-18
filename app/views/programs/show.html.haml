@@ -1,0 +1,9 @@
+= render :partial => '/calendars/secondary_nav'
+
+%p
+  %b
+    Name:
+  = h @program.name
+= link_to 'Edit', edit_program_path(@program)
+|
+= link_to 'Back', programs_path

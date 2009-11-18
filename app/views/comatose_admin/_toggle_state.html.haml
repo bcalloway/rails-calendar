@@ -1,0 +1,6 @@
+%span{ :class => "#{obj.state}" }
+  = "#{obj.state}".upcase
+- if cms_admin
+  = link_to "Approve", approve_page_path(obj)
+  |
+  = link_to "Deny", deny_page_path(obj)

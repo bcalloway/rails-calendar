@@ -1,0 +1,11 @@
+- form_for(@program) do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+
+  %p
+    = f.submit button
+    %em or
+    = link_to ' Cancel', programs_path

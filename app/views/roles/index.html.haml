@@ -1,0 +1,39 @@
+%h1
+  User Roles
+
+= render :partial => '/roles/secondary_nav'
+
+%table.table
+  %tr
+    %th
+      Role Name
+  %tr
+    %td
+      Admin
+    %td
+      Built-in system role, full-access
+  %tr
+    %td
+      Publisher
+    %td
+      Built-in system role, full-access to CMS
+  %tr
+    %td
+      Writer
+    %td
+      Built-in system role, read/write privileges to CMS
+  %tr
+    %td
+      User
+    %td
+      Built-in system role, no privileges
+
+  - @roles.each do |role|
+    %tr
+      %td
+        = h role.name.capitalize
+
+      %td
+        = link_to 'Edit', edit_role_path(role)
+        |
+        = link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete

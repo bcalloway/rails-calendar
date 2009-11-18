@@ -1,0 +1,86 @@
+/////////////////////////////////////////////////////////////////// error messages
+#errorExplanation
+  :width 400px
+  :border 2px solid red
+  :padding 7px
+  :padding-bottom 12px
+  :margin-bottom 20px
+  :background-color #f0f0f0
+
+  h2
+    :text-align left
+    :font-weight bold
+    :padding 5px 5px 5px 15px
+    :font-size 12px
+    :margin -7px
+    :background-color #c00
+    :color #fff
+
+  p
+    :color #333
+    :margin-bottom 0
+    :padding 15px
+  
+  ul
+    :margin-left 25px
+    li
+      :font-size 12px
+      :list-style square
+
+.fieldWithErrors
+  :display inline
+  
+  input, select
+    :background #fdd
+  
+#flash
+  :clear both
+  :position relative
+
+#flash.crop
+  :margin-top 25px
+  
+=flash-box
+  :-moz-border-radius 3px
+  :-webkit-border-radius 3px
+  :text-align center
+  :margin 0 auto 15px
+  :padding 5px
+  :height 32px
+  span
+    :display block
+    :padding-top 5px
+    :font-size 13px
+    :width 900px
+    :margin 0 auto
+    :text-align center
+
+#flash_error
+  +flash-box
+  :border 1px solid #990000
+  :color #990000
+  :background #fdd url('../images/flash-error.png') no-repeat 10px 5px
+
+#flash_warning
+  +flash-box
+  :border 1px solid #996600
+  :background #ffffcc url('../images/flash-warning.png') no-repeat 10px 5px
+  :color #996600
+
+#flash_notice
+  +flash-box
+  :border 1px solid #006600
+  :background #BBFFB6 url('../images/flash-check.png') no-repeat 10px 5px
+  :padding 5px
+  :color #006600
+
+/////////////////////////////////////////////////////////////////// global
+h1
+  :font-weight bold
+  :font-size 24px
+  
+strong
+  :font-weight bold
+
+.clear
+  :clear both

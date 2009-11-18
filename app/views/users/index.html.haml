@@ -1,0 +1,46 @@
+%h1
+  Administrative Users
+  
+= render :partial => '/users/secondary_nav'
+
+= will_paginate @users
+
+%table.table
+  %tr
+    %th
+      Login
+    %th
+      Email
+    %th
+      Last Login
+    %th
+      Last Login IP
+    %th
+      Role
+    %th
+      Confirmed?
+  - @users.each do |user|
+    %tr
+      %td
+        = h user.login
+      %td
+        = h user.email
+      %td
+        = h user.last_login_at
+      %td
+        = h user.last_login_ip
+      %td
+        = h user.role.name.capitalize
+      %td
+        %span{ :class => user.state }
+          = h user.state
+      %td
+        = link_to 'Confirm', confirm_path(user)
+        |
+        = link_to 'Deny', deny_path(user)
+        |
+        = link_to 'Show', user
+        |
+        = link_to 'Edit', edit_user_path(user)
+        |
+        = link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete

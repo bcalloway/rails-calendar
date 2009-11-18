@@ -1,0 +1,11 @@
+- semantic_form_for @user do |f|
+  - f.inputs do
+    - unless @user.id == current_user.id
+      %li
+        = f.input :role, :prompt => "--Select Role--", :required => true
+        
+    = f.input :login, :required => true
+    = f.input :email, :required => true
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+    = f.commit_button "#{button}"

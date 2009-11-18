@@ -1,0 +1,12 @@
+%p
+  %strong
+    The following page has been added or updated and needs your approval:
+  = @page.full_path
+  
+%p
+  Please login to approve or deny the update:
+
+= link_to "http://#{SITE_URL}/login", "http://#{SITE_URL}/login"
+
+%p
+  If the above URL does not work, try copying and pasting it into your browser.

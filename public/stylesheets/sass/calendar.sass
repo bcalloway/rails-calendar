@@ -1,0 +1,308 @@
+=headline
+  :height 25px
+  :padding-top 8px
+  :padding-left 8px
+  :display block
+
+= white_link  
+  &:link, &:visited
+    :color #fff
+    :text-decoration none
+  &:hover
+    :color #fff
+    :text-decoration underline
+      
+#event-headline
+  :color #fff
+  :font-weight bold
+  :width 525px
+  +headline
+
+  .event-day
+    :background-color #666
+    :float left
+    +headline
+    :padding-right 8px
+    :width 40px
+
+  .event-date
+    :background-color #999
+    :float left
+    +headline
+    :width 450px
+
+h1.current-calendar
+  :font-family Georgia, Times, serif
+  :color #000 !important
+  :font-size 28px
+  :padding-left 15px
+  :text-decoration none
+
+#calendar-content
+  :display block
+  :margin-top 15px
+  :padding-left 10px
+      
+  h1.event
+    :color #D92105 !important
+    :font-size 18px
+    :text-decoration none
+  
+    a
+      &:link, &:visited
+        :color #D92105 !important
+        :text-decoration none
+    
+      &:hover
+        :color #D92105 !important
+        :text-decoration underline
+
+#calendar-content.no-events
+  :padding-top 25px
+
+h1.event-show
+  :color #D92105 !important
+  :font-size 18px
+  :margin-bottom 10px
+
+
+.monthName
+  :font-weight bold
+  :color #000
+  :font-size 18px
+  :vertical-align top
+
+  a
+    :padding-top 5px
+    +white_link
+
+
+tr.calendar_nav
+  :height 30px
+  :background none
+  
+.dayName th
+  :font-size 0.7em
+  :padding-top 0.6em
+  :padding-left 5px
+  :padding-bottom 0.3em
+  :background-color #303030
+  :color white
+
+
+.otherMonth
+  :padding 7px 7px
+  :color #666
+  :background-color #000
+
+
+.day
+  :padding 7px 7px
+  :text-align center
+  :background-color #000
+  :color #FFF
+
+
+.specialDay
+  :padding 5px 5px
+  :text-align center
+  :color #FFF
+  :background-color #731206
+  :font-weight bold
+  :border 1pt solid #fff
+
+  a
+    +white_link
+
+
+.weekendDay
+  :background-color #000
+  :color #666
+
+
+.today
+  :background-color #FFF
+  :color #000
+  :border 1pt solid white
+  
+  a
+    :text-align left
+
+    &:link, &:visited
+      :color #731206
+    &:hover
+      :background none
+      :text-decoration underline
+
+// The calendar widget in left-col    
+#calendar
+  table.calendar
+    :width 225px !important
+    :height 200px
+    :margin 0 0 0 5px
+    
+    th a.next img
+      :float right
+
+// The calendar displayed in admin
+#main_calendar 
+  table.calendar
+    :margin-bottom 25px
+    :width 900px !important
+    :margin 0 auto
+  
+    th.monthName
+      :font-family Georgia, Times, sans-serif
+      :color #000 !important
+      :font-size 24px
+      :padding-bottom 20px
+    
+    th.monthName a
+      :color #000 !important
+    
+    td
+      :width 85px !important
+      :height 100px !important
+
+    p.num
+      :text-align left
+      :padding 0px
+      :margin 0 !important
+      
+    a.text
+      :height 20px
+      :display block
+      :width 85px !important
+     
+    .otherMonth, .day, .specialDay
+      :border 1px solid white
+      :font-size 12px
+
+    .specialDay
+      a
+        :text-align left
+
+        &:link, &:visited
+          :color #fff
+        &:hover
+          :background none
+          :text-decoration underline
+          
+    .today
+      a
+        :text-align left
+
+        &:link, &:visited
+          :color #731206
+        &:hover
+          :background none
+          :text-decoration underline
+
+#filter
+  :width 250px
+  :float left
+  
+#calendar-list
+  :width 750px
+  :float left
+  
+=box
+  :width 15px
+  :height 15px
+  :display block
+  :border 1px solid #fff
+  :float left
+  :margin-top 1px
+  :margin-right 5px
+      
+#legend
+  :background #000
+  :width 228px
+  :height 35px
+  :margin-top 10px
+  :margin-left 5px
+  :color #fff
+
+  #box
+    :width 75px
+    :float left
+    :margin-top 10px
+    :margin-left 30px
+  
+    .off
+      +box
+      :background-color #fff
+  
+    .event
+      +box
+      :background-color #731206
+  
+#programs
+  :margin-top 10px
+  :margin-left 8px
+  :width 225px
+  :background-color #ccc
+  
+  h2
+    :padding-top 10px
+    :font-size 16px
+    :background-color #666
+    :height 30px
+    :color #fff
+    :padding-left 10px
+    :margin-bottom 10px
+  
+  h3
+    :font-size 15px
+    :color #666
+    :text-align left
+    :padding-left 10px
+    :padding-bottom 2px
+  
+  hr
+    :background-color #666
+    
+  p
+    :text-align left
+    :padding 0 10px
+    :color #666
+  
+  form
+    :padding-bottom 25px
+    :margin-left 10px
+
+#checkboxes
+  :margin-top 10px
+  :margin-left 10px
+ 
+ul.category-list
+  :clear both
+  :margin-left 25px
+  :margin-bottom 10px
+  
+  li
+    :text-align left
+    :color #990000
+
+#programs form input#update
+  :background url('../images/update.jpg') no-repeat
+  :width 94px
+  :height 25px
+  :cursor pointer
+
+#ical-export
+  :display block
+  :margin-left 8px
+  :margin-bottom 5px
+  
+  a
+    :background url('../images/ical.png') no-repeat
+    :padding-left 20px
+    
+    &:link, &:visited
+      :color #990000
+      :text-decoration none
+    
+    &:hover
+      :color #990000
+      :text-decoration underline

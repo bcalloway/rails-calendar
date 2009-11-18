@@ -1,0 +1,19 @@
+= render :partial => '/calendars/secondary_nav'
+
+.tertiary-navigation
+  %ul
+    %li
+      = link_to 'Add New Program', "/programs/new"
+  
+%h1 Event Programs
+%table.table
+  %tr
+    %th
+      Name
+  - @programs.each do |program|
+    %tr
+      %td
+        = h program.name
+      %td
+        = link_to 'Edit', "/programs/#{program.id}/edit"
+        = link_to 'Destroy', program, :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,26 @@
+= @ical
+
+%h1.event-show
+  = h @calendar.event
+  
+%p
+  %strong
+    Description:
+  = @calendar.description
+%p
+  %strong
+    Start:
+  = h @calendar.start_date.strftime("%B %d, %Y %I:%M %p")
+  
+%p
+  %strong
+    End:
+  = h @calendar.end_date.strftime("%B %d, %Y %I:%M %p")
+        
+#ical_export
+  = link_to "Export Event", "/event/#{@calendar.id}"
+
+.clear
+    
+%p
+  = link_to('Edit', "/calendars/edit/#{@calendar.id}", :rel => 'facebox') + " | " + link_to('Delete', "/calendars/destroy/#{@calendar.id}", :confirm => 'Are you sure?',  :method => :delete)

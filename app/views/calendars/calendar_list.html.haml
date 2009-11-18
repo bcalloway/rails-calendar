@@ -1,0 +1,49 @@
+= render :partial => '/calendars/program_filter'
+
+#calendar-list
+  - if params[:program]
+    = link_to image_tag("/images/ical.png") + "Subscribe to this iCal Feed", "webcal://#{request.domain(2)}/subscribe_selected/#{params[:id]}/#{params[:program].join(',')}"
+    %br
+  = link_to image_tag("/images/ical.png") + "Subscribe to entire iCal Feed", "webcal://#{request.domain(2)}/subscribe"
+  
+  %h1
+    - dateheading = DateTime.strptime("#{params[:id]}T00:00:00+00:00")
+    = dateheading.strftime("%B %Y")
+    
+  #ical-export
+    - if request.request_uri == '/filter/calendar' && params[:program]
+      - prog = []
+      - for program in params[:program]
+        - unless program == params[:program].last
+          - prog.push("#{program},")
+        - else
+          - prog.push("#{program}")
+      = link_to "Export to iCalendar", "/events/#{params[:id]}/#{prog}"
+    - else
+      = link_to "Export to iCalendar", "/events/#{params[:id]}"   
+  .clear
+  - if @events.empty?
+    #calendar-content.no-events
+      %p
+        %strong
+          Sorry, there are no events that match your search criteria
+        
+  - @daily_events.sort.each do |start_date, events|
+    #event-headline
+      .event-day
+        = h start_date.strftime("%a").upcase
+
+      .event-date
+        = h start_date.strftime("%B %d").upcase
+
+    #calendar-content
+      - for event in events
+        %h1.event
+          = link_to event.event.upcase, "/calendars/#{event.id}", :rel => 'facebox'
+
+        %p
+          = event.description
+
+      - if events.empty?
+        %strong
+          There are no events

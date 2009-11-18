@@ -1,0 +1,33 @@
+= render :partial => '/calendars/program_filter'
+
+#calendar-list
+  %h1
+    - dateheading = DateTime.strptime("#{params[:id]}T00:00:00+00:00")
+    = dateheading.strftime("%B %Y")
+
+  #ical-export 
+    = link_to "Export to iCalendar", "/daily_events/#{params[:id]}"   
+  .clear
+
+  - @daily_events.sort.each do |start_date, events|
+
+    - mydate = DateTime.strptime("#{params[:id]}T00:00:00+00:00")
+
+    - for event in events
+      #event-headline
+        .event-day
+          = mydate.strftime("%a").upcase
+  
+        .event-date        
+          = mydate.strftime("%B %d").upcase
+          - if event.end_date.strftime("%B %d") > mydate.strftime("%B %d")
+            thru
+            = event.end_date.strftime("%B %d").upcase
+      #calendar-content
+        %h1.event
+          = link_to event.event.upcase, "/calendars/#{event.id}", :rel => 'facebox'
+
+        .clear
+
+        %p
+          = event.description

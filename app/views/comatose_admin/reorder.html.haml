@@ -1,0 +1,24 @@
+%h1
+  Reorder Pages
+%h3
+  "
+  = @page.title
+  " child pages:
+%ul.page-list
+  - @page.children.each do |page|
+    %li
+      %table{ :cellspacing => "0", :cellpadding => "0" }
+        %tr
+          %td{ :rowspan => "2", :valign => "center" }
+            = image_tag 'comatose/page.gif', :size=>'25x31', :align=>"absmiddle"
+          %td
+            %a.page
+              = page.title
+        %tr
+          %td.commands
+            = link_to "Move Up", :action => 'reorder', :cmd => 'up', :page => page.id
+            ,
+            = link_to "Move Down", :action => 'reorder', :cmd=>'down', :page => page.id
+
+#button-group
+  = link_to "Finished", :action=>'index'

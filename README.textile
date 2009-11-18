@@ -1,0 +1,62 @@
+h1. Scheduling Calendar
+
+A Rails plugin that creates the ability to add specific events to a calendar and assign them to categories.
+
+h3.  Requirements
+
+*Gems*
+* RedCloth
+* will_paginate
+* haml
+* formtastic
+* searchlogic
+* icalendar
+
+Be sure to vendor the following gems by inserting these lines into your envrironment.rb file:
+<pre><code>
+  config.gem 'RedCloth',
+             :lib => 'redcloth' 
+  config.gem 'will_paginate', 
+             :lib => 'will_paginate', 
+             :source => 'http://gemcutter.org'
+  config.gem 'haml',
+             :source => 'http://gemcutter.org'
+  config.gem 'formtastic',
+             :source => 'http://gemcutter.org'
+  config.gem 'searchlogic',
+             :lib => 'searchlogic',
+             :source => 'http://gemcutter.org'
+  config.gem 'icalendar'
+</code></pre>
+
+Then run
+<pre><code>
+  sudo rake gems:install
+  rake gems:unpack
+</code></pre>
+
+*Plugins*
+* calendar_helper
+
+Run <code>script/plugin install git://github.com/topfunky/calendar_helper.git</code>
+
+h3.  Routes
+
+Add these to routes.rb
+<pre><code>
+  map.resources :programs
+  
+  map.resources :calendars  
+  map.connect  '/admin/calendars/:id', :controller => 'calendars', :action => 'index'
+  map.connect  '/daily_event/:id', :controller => 'calendars', :action => 'daily_list'
+  map.connect '/calendar/:id', :controller => 'calendars', :action => 'calendar_list'
+  map.connect '/calendars/:id', :controller => 'calendars', :action => 'show'
+  map.connect '/filter/calendar/:id', :controller => 'calendars', :action => 'filter'
+
+  map.connect '/subscribe', :controller => 'calendars', :action => 'subscribe'
+  map.connect '/subscribe_selected/:id/:program', :controller => 'calendars', :action => 'subscribe_selected'
+  map.connect '/events/:id', :controller => 'calendars', :action => 'export_events'
+  map.connect '/daily_events/:id', :controller => 'calendars', :action => 'export_daily_events'
+  map.connect '/events/:id/:program', :controller => 'calendars', :action => 'export_selected_events'
+  map.connect '/event/:id', :controller => 'calendars', :action => 'export_event'
+</code></pre>

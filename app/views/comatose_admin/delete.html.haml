@@ -1,0 +1,21 @@
+%h1
+  Page Delete Confirmation
+%blockquote
+  %p
+    Are you sure you want to delete the page titled  "
+    %b
+      = @page.title
+    "?
+  - unless @page.children.empty?
+    %p
+      It has
+      %b
+        = @page.children.length
+      child pages that will also be deleted...
+
+= start_form_tag
+#button-group
+  = submit_tag "Yes, Delete The Page"
+  or
+  = link_to "Cancel", :action=>'index'
+= end_form_tag

@@ -1,0 +1,49 @@
+#filter
+  #calendar
+    = mini_calendar
+    #legend
+      #box
+        .off
+        Today
+      #box
+        .event
+        Event
+
+  .clear
+
+  #programs
+    %h2
+      Customize the Calendar
+
+    %p
+      You can use the checkboxes below to customize what you see on the calendar.  For instance, if you would like to see just the Recreational calendar, first click on "Uncheck All", then click on the Recreational checkbox, then click on the "Update" button at the bottom of the list.
+
+    %h3
+      Customize
+
+    %hr
+
+    #checkboxes
+      = link_to "#{image_tag '/images/check_all.jpg', :alt => 'Check All'}", '#check_all', :name => "check_all", :id => 'check_all', :target => '_top'
+      = link_to "#{image_tag '/images/uncheck_all.jpg', :alt => 'Uncheck All'}",'#uncheck_all', :name => "uncheck_all", :id => 'uncheck_all', :target => '_top'
+
+    - form_for :calendar, :url => '/filter/calendar', :method => 'post' do
+      - start_date = Time.now
+      = hidden_field_tag "id", start_date.strftime("%Y-%m-%d")
+
+      %ul.program-list
+
+        - for program in Program.all
+          %li       
+            - @prog = params[:program]
+            - check = false
+            - if @prog
+              - @prog.each do |p|
+                - if "#{program.id}" == "#{p}"
+                  - check = true
+
+            = check_box_tag "program[]", program.id, check
+            = program.name
+
+      %p
+        = submit_tag "", :name => nil, :id => "update"

@@ -1,0 +1,52 @@
+%h1
+  Page Revisions
+%form
+  .revisions.older-content
+    .header
+      .header-actions
+        - form_tag :action => 'versions', :id => @page, :html => { :method => :get } do
+          View Version:
+          = select_tag "version", options_from_collection_for_select(@page.versions, 'version', 'version', @version_num), {'onchange'=>'this.form.submit();'}
+          = submit_tag 'Go', {'id'=>'go-btn'}
+
+      Version
+      = @version_num
+    .meta
+      %label.title
+        %span
+          Title:
+        = @version.title
+      %label
+        %span
+          Slug:
+        = @version.slug
+      %label
+        %span
+          Keywords:
+        = @version.keywords
+    = @version.body.split("\n").join('<br/>') unless @version.body.nil?
+    
+    #button-group.footer
+      - form_tag :action => 'set_version', :id => @page, :version => @version_num do
+        = submit_tag "Set As Current Version"
+        or
+        = link_to "Cancel", :action => 'index'
+
+  .revisions.current-content
+    .header
+      Current Version
+    .meta
+      %label.title
+        %span
+          Title:
+        = @page.title
+      %label
+        %span
+          Slug:
+        = @page.slug
+      %label
+        %span
+          Keywords:
+        = @page.keywords
+    = @page.body.split("\n").join('<br/>') unless @page.body.nil?
+  %div{ :style => "clear:both" }

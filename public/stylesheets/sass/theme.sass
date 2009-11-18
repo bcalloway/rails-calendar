@@ -1,0 +1,427 @@
+.small
+  :font-size 11px
+  :font-style normal
+  :font-weight normal
+  :text-transform normal
+  :letter-spacing normal
+  :line-height 1.4em
+
+
+.gray
+  :color #999999
+  :font-family Georgia, serif
+  :font-size 13px
+  :font-style italic
+  :font-weight normal
+  :text-transform normal
+  :letter-spacing normal
+  :line-height 1.6em
+
+
+.hightlight
+  :background-color #ffff88
+  :font-weight bold
+  :color #36393d
+
+
+a
+  &:link, &:visited, &:hover
+    :color #36393d
+
+
+h1, h2, h3
+  :color #36393d
+
+hr
+  :background #f0f0ee
+  :color #f0f0ee
+
+ul.list li
+  :border-bottom-color #F0F0EE
+  :border-bottom-width 1px
+  :border-bottom-style solid
+
+  .item .avatar
+    :border-color #F0F0EE
+    :border-width 1px
+    :border-style solid
+    :padding 2px
+
+body
+  :color #222
+  :background #cfcfcf
+  :font-family helvetica, arial, sans-serif
+
+strong
+  :font-weight bold
+    
+///////////////////////////////////////////////////////////////////////// tables, forms
+.table
+  th
+    :background #36393d
+    :color #FFF
+
+  td
+    :border-bottom 1px solid #F0F0EE
+
+  tr.even
+    :background #ebebeb
+
+
+.formtastic
+  :margin-left 50px !important
+  
+  li
+    :list-style-type none
+      
+  fieldset
+    :width 75%
+    
+  label.label
+    :color #666666
+
+  input.text_field, textarea.text_area
+    :width 100%
+    :border 1px solid #cfcfcf
+
+  input.button
+    :background #cfcfcf
+    :-moz-border-radius 5px
+    :border 1px solid #c1c1c1
+    :padding 2px 5px
+    :cursor pointer
+    :color #36393d
+    :font-weight bold
+    :font-size 11px
+
+    &:hover
+      :border 1px solid #666
+
+  .help
+    :font-style italic
+    :color #8C8C8C
+    :font-size .9em
+
+  .navform a
+    :color #cc0000
+
+span.approved, span.confirmed
+  :font-weight bold
+  :color green
+
+span.denied
+  :font-weight bold
+  :color red
+
+span.pending
+  :font-weight bold
+  :color orange
+
+///////////////////////////////////////////////////////////////////////// flash
+#errorExplanation
+  :width 400px
+  :border 2px solid red
+  :padding 7px
+  :padding-bottom 12px
+  :margin-bottom 20px
+  :background-color #f0f0f0
+
+  h2
+    :text-align left
+    :font-weight bold
+    :padding 5px 5px 5px 15px
+    :font-size 12px
+    :margin -7px
+    :background-color #c00
+    :color #fff
+
+  p
+    :color #333
+    :margin-bottom 0
+    :padding 15px
+  
+  ul
+    :margin-left 25px
+    li
+      :font-size 12px
+      :list-style square
+
+.fieldWithErrors
+  :display inline
+  
+  input, select
+    :background #fdd
+  
+#flash
+  :clear both
+  :position relative
+  :margin-bottom 20px
+
+#flash.crop
+  :margin-top 25px
+  
+=flash-box
+  :-moz-border-radius 3px
+  :-webkit-border-radius 3px
+  :text-align center
+  :margin 0 auto 15px
+  :padding 5px
+  :height 32px
+  span
+    :display block
+    :padding-top 5px
+    :font-size 13px
+    :width 900px
+    :margin 0 auto
+    :text-align center
+
+#flash_error
+  +flash-box
+  :border 1px solid #990000
+  :color #990000
+  :background #fdd url('../images/flash-error.png') no-repeat 10px 5px
+
+#flash_warning
+  +flash-box
+  :border 1px solid #996600
+  :background #ffffcc url('../images/flash-warning.png') no-repeat 10px 5px
+  :color #996600
+
+#flash_notice
+  +flash-box
+  :border 1px solid #006600
+  :background #BBFFB6 url('../images/flash-check.png') no-repeat 10px 5px
+  :padding 5px
+  :color #006600
+      
+
+///////////////////////////////////////////////////////////////////////// header
+#header
+  :background #36393d
+
+  h1
+    :padding 15px 0
+    :font-size 28px
+    :font-style normal
+    :font-weight bold
+    :text-transform normal
+    :letter-spacing -1px
+    :line-height 1.2em
+    :color #fff
+
+    a
+      &:link, &:hover, &:visited
+        :color #FFF
+
+  #view 
+    :border 1px solid #FFFFFF
+    :float right
+    :margin-top 25px
+    :padding 5px
+    :text-align center
+    :width 75px
+
+    a
+      &:link, &:hover, &:visited
+        :color #FFF
+        
+///////////////////////////////////////////////////////////////////////// user nav
+#user-navigation
+  :top auto
+  :bottom 5px
+  :right 25px
+
+  a
+    &:link, &:visited, &:hover
+      :color #fff
+
+#user-navigation ul li a
+  &:link, &:visited, &:hover
+    :text-decoration none
+    :color #FFF
+        
+
+///////////////////////////////////////////////////////////////////////// sidebar
+#sidebar
+  .block
+    :background #FFF
+
+    h4
+      :font-weight bold
+
+  .notice
+    :background #E6EEFC
+
+    h4
+      :color #0B43A8
+
+  h3
+    :background #36393d
+    :color #FFF
+    :border-bottom 5px solid #1a1a1a
+
+#sidebar ul li a
+  &:link, &:visited
+    :background #FFF
+    :border-bottom 1px solid #F0F0EE
+    :text-decoration none
+
+  &:hover, &:active
+    :background #666666
+    :color #ffffff
+        
+///////////////////////////////////////////////////////////////////////// main-nav
+#main-navigation
+  :background-color #999
+  :height 35px
+  :-moz-border-radius-topleft 4px
+  :-webkit-border-top-left-radius 4px
+  :-moz-border-radius-topright 4px
+  :-webkit-border-top-right-radius 4px
+
+  ul
+    :background-color #005573
+    
+    li
+      :padding-left 0
+      :-moz-border-radius-topleft 4px
+      :-webkit-border-top-left-radius 4px
+      :-moz-border-radius-topright 4px
+      :-webkit-border-top-right-radius 4px
+
+      a
+        :padding 8px 0
+        :padding 8px 15px
+        :-moz-border-radius-topleft 4px
+        :-webkit-border-top-left-radius 4px
+        :-moz-border-radius-topright 4px
+        :-webkit-border-top-right-radius 4px
+
+        &:hover
+          :background-color #001C26
+          :text-decoration none
+          :color #F7F7F8
+
+        &:link, &:visited
+          :text-decoration none
+          :color #F7F7F8
+
+.secondary-navigation
+  :background #36393d
+  :border-bottom-color #1a1a1a
+  :height 30px
+  :margin-bottom 10px
+
+  ul li
+    :background-color #1a1a1a
+    
+    a
+      &:link, &:visited, &:hover
+        :text-decoration none
+        :color #FFF
+    
+      &:hover
+        :background-color #1a1a1a
+        :background #666666
+
+.tertiary-navigation
+  :margin-bottom 10px
+
+  ul li
+    :background-color #1a1a1a
+    :padding 5px
+    :width 100px
+    :text-align center
+
+    a 
+      &:link, &:visited, &:hover
+        :text-decoration none
+        :color #FFF
+
+      &:hover
+        :background-color #1a1a1a
+        :background #666666
+
+///////////////////////////////////////////////////////////////////////// main
+#page-container
+  :margin 0
+  :padding 0
+
+#no-role
+  :border 4px solid red
+  :width 500px
+  :height 250px
+  :margin 0 auto
+  
+  h2
+    :padding 25px
+    
+#main
+  :-moz-border-radius-topleft 4px
+  :-moz-border-radius-topright 4px
+  :width 100%
+
+#main
+  #content
+    :-moz-background-clip border
+    :-moz-background-inline-policy continuous
+    :-moz-background-origin padding
+    :background white none repeat scroll 0 0
+    :border-left 1px solid silver
+    :border-right 1px solid silver
+    :padding 15px
+  
+#main .block .content
+  :background #FFF
+  :padding-top 1px
+
+  h2
+    :margin-left 15px
+    :font-size 22px
+    :font-style normal
+    :font-weight bold
+    :text-transform normal
+    :letter-spacing -1px
+    :line-height 1.2em
+
+  p
+    :font-size 13px
+    :font-style normal
+    :font-weight normal
+    :text-transform normal
+    :letter-spacing normal
+    :line-height 1.45em
+
+///////////////////////////////////////////////////////////////////////// footer
+#footer .block
+  :color #FFF
+  :background #1a1a1a
+
+  p
+    :margin 0
+    :padding 10px
+
+///////////////////////////////////////////////////////////////////////// pagination
+.pagination
+  :margin-bottom 25px
+  :height 25px
+  a
+    :background #cfcfcf
+    :-moz-border-radius 3px
+    :border 1px solid #c1c1c1
+
+  span
+    :background #cfcfcf
+    :-moz-border-radius 3px
+    :border 1px solid #c1c1c1
+
+    &.current
+      :background #36393d
+      :color #FFF
+      :border 1px solid #36393d
+
+  a
+    :color #1a1a1a
+
+    &:hover
+      :border 1px solid #666
