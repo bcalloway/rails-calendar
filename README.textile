@@ -2,6 +2,8 @@ h1. Scheduling Calendar
 
 A Rails plugin that creates the ability to add specific events to a calendar and assign them to categories.
 
+NOTE:  This is a work in progress and currently exists as a set of sample files to add to an existing project.  A gem might be created in he future.
+
 h3.  Requirements
 
 *Gems*
@@ -60,3 +62,7 @@ Add these to routes.rb
   map.connect '/events/:id/:program', :controller => 'calendars', :action => 'export_selected_events'
   map.connect '/event/:id', :controller => 'calendars', :action => 'export_event'
 </code></pre>
+
+h3. License
+
+Copyright © 2009 Brandon Calloway, released under the MIT license
