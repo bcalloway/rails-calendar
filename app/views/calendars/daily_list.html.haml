@@ -13,21 +13,23 @@
 
     - mydate = DateTime.strptime("#{params[:id]}T00:00:00+00:00")
 
-    - for event in events
-      #event-headline
-        .event-day
-          = mydate.strftime("%a").upcase
-  
-        .event-date        
-          = mydate.strftime("%B %d").upcase
+
+    #event-headline
+      .event-day
+        = mydate.strftime("%a").upcase
+
+      .event-date        
+        = mydate.strftime("%B %d").upcase
+        - for event in events
           - if event.end_date.strftime("%B %d") > mydate.strftime("%B %d")
             thru
             = event.end_date.strftime("%B %d").upcase
-      #calendar-content
-        %h1.event
-          = link_to event.event.upcase, "/calendars/#{event.id}", :rel => 'facebox'
 
-        .clear
+    #calendar-content
+      %h1.event
+        = link_to event.event.upcase, "/calendars/#{event.id}", :rel => 'facebox'
 
-        %p
-          = event.description
+      .clear
+
+      %p
+        = event.description
