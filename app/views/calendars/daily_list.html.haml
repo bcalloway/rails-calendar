@@ -25,11 +25,12 @@
             thru
             = event.end_date.strftime("%B %d").upcase
 
-    #calendar-content
-      %h1.event
-        = link_to event.event.upcase, "/calendars/#{event.id}", :rel => 'facebox'
+    - for event in events
+      #calendar-content
+        %h1.event
+          = link_to event.event.upcase, "/calendars/#{event.id}", :rel => 'facebox'
 
-      .clear
+        .clear
 
-      %p
-        = event.description
+        %p
+          = event.description
