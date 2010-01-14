@@ -2,7 +2,7 @@ h1. Scheduling Calendar
 
 A Rails plugin that creates the ability to add specific events to a calendar and assign them to categories.  On the frontend, a calendar listing will be displayed along with a mini-calendar widget with events highlighted, as well as a filter-by-category form.  Calendar can be exported in iCal format, or subscribed to.
 
-NOTE:  This is a work in progress and currently exists as a set of sample files to add to an existing project.  A gem might be created in he future.
+NOTE:  This is a work in progress and currently exists as a set of sample files to add to an existing project.  A gem might be created in the future.
 
 h3. Features
 
