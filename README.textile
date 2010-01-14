@@ -84,18 +84,14 @@ Run <code>script/plugin install git://github.com/topfunky/calendar_helper.git</c
 h3. Routes
 
 Add these to routes.rb
+_Note: for calendar routes, params[:id] is the current date in the following format, 2009-01-14_
 <pre><code>
   map.resources :programs
   map.resources :calendars
-  ## This routes to the admin portal for the calendar, where :id is the current date (e.g. 2010-01-14)
   map.connect  '/admin/calendars/:id', :controller => 'calendars', :action => 'index'
-  ## This shows all events for the chosen day
   map.connect  '/daily_event/:id', :controller => 'calendars', :action => 'daily_list'
-  ## This shows a list of all events for the current month, where :id is the current date (e.g. 2010-01-14)
   map.connect '/calendar/:id', :controller => 'calendars', :action => 'calendar_list'
-  ## This shows the details of an individual calendar event
   map.connect '/calendars/:id', :controller => 'calendars', :action => 'show'
-  ## This shows a list of calendar events filtered by program
   map.connect '/filter/calendar/:id', :controller => 'calendars', :action => 'filter'
   map.connect '/subscribe', :controller => 'calendars', :action => 'subscribe'
   map.connect '/subscribe_selected/:id/:program', :controller => 'calendars', :action => 'subscribe_selected'
