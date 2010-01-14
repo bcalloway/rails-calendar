@@ -1,6 +1,6 @@
 h1. Scheduling Calendar
 
-A Rails plugin that creates the ability to add specific events to a calendar and assign them to categories.
+A Rails plugin that creates the ability to add specific events to a calendar and assign them to categories.  On the frontend, a calendar listing will be displayed along with a mini-calendar widget with events highlighted, as well as a filter-by-category form.  Calendar can be exported in iCal format, or subscribed to.
 
 NOTE:  This is a work in progress and currently exists as a set of sample files to add to an existing project.  A gem might be created in he future.
 
@@ -12,6 +12,7 @@ h3. Features
 * Export calendar events as an iCal file
 * Subscribe to entire calendar
 * Subscribe to a specific category or categories
+* Decent test coverage using Shoulda, Mocha, and Factory Girl
 
 h3. What's Included
 
@@ -50,6 +51,20 @@ Be sure to vendor the following gems by inserting these lines into your environm
   config.gem 'icalendar'
 </code></pre>
 
+To run the included tests, place this in config/environments/test.rb:
+<pre></code>
+  config.gem  'mocha'
+  config.gem  'factory_girl', 
+              :lib => 'factory_girl', 
+              :source => 'http://gemcutter.org'
+  config.gem  'shoulda', 
+              :lib => 'shoulda', 
+              :source => 'http://gemcutter.org'
+
+  require 'factory_girl'
+  require 'mocha'
+</code></pre>
+
 Then run
 <pre><code>
   sudo rake gems:install
@@ -71,12 +86,21 @@ h3. Routes
 Add these to routes.rb
 <pre><code>
   map.resources :programs
-  
   map.resources :calendars  
+  
+  # This routes to the admin portal for the calendar, where :id is the current date (e.g. 2010-01-14)
   map.connect  '/admin/calendars/:id', :controller => 'calendars', :action => 'index'
+  
+  # This shows all events for the chosen day
   map.connect  '/daily_event/:id', :controller => 'calendars', :action => 'daily_list'
+  
+  # This shows a list of all events for the current month, where :id is the current date (e.g. 2010-01-14)
   map.connect '/calendar/:id', :controller => 'calendars', :action => 'calendar_list'
+  
+  # This shows the details of an individual calendar event
   map.connect '/calendars/:id', :controller => 'calendars', :action => 'show'
+  
+  # This shows a list of calendar events filtered by program
   map.connect '/filter/calendar/:id', :controller => 'calendars', :action => 'filter'
 
   map.connect '/subscribe', :controller => 'calendars', :action => 'subscribe'
@@ -86,6 +110,58 @@ Add these to routes.rb
   map.connect '/events/:id/:program', :controller => 'calendars', :action => 'export_selected_events'
   map.connect '/event/:id', :controller => 'calendars', :action => 'export_event'
 </code></pre>
+
+h3. How to Use
+
+Out of the box, this provides both admin views and frontend views.  There is no authentication built-in so you are free to choose one to protect the admin panel.
+
+In your application layout, reference these stylesheets and javascripts:
+<pre><code>
+  = stylesheet_link_tag 'formtastic', 'screen', 'calendar', 'facebox', :media => 'all', :cache => true
+  = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js', 'facebox', 'base', :cache => true
+</code></pre>
+
+In your admin layout, reference these stylesheets and javascripts.
+<pre><code>
+  = stylesheet_link_tag 'formtastic', :media => 'all', :cache => 'admin/all'
+  = stylesheet_link_tag 'http://jqueryui.com/latest/themes/base/ui.all.css'
+
+  = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js', 'admin', 'http://jqueryui.com/latest/ui/ui.datepicker.js'
+</code></pre>
+
+*As an alternative, you can use the included admin layout which has it's own theme supplied.*
+
+To access the calendar list view in the frontend, create a link like so:
+<pre><code>
+= link_to "Calendar", "calendar/#{Time.now.strftime('%Y-%m-%d')}"
+</code></pre>
+
+There is also a view named calendar.html.haml with will produce a standard calendar monthly view.  To use this instead of the default list view, change the calendar_list action in calendars_controller.rb from this:
+<pre><code>
+def calendar_list
+  @events = Calendar.current_events(params[:id])
+  @daily_events = @events.group_by { |d| d.start_date }
+
+  respond_to do |format|
+    format.html{ render :layout => 'application' }
+  end
+end
+</code></pre>
+
+to this:
+<pre><code>
+def calendar_list
+  @events = Calendar.current_events(params[:id])
+  @daily_events = @events.group_by { |d| d.start_date }
+
+  respond_to do |format|
+    format.html{ render :layout => 'application', :template => 'calendars/calendar.html.haml' }
+  end
+end
+</code></pre>
+
+Check the routes.rb file for a better understanding on how to user other routes.
+
 
 h3. License
 

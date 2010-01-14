@@ -5,8 +5,10 @@
     
     = f.input :event, :required => true
     = f.input :description, :required => true
-    = f.input :start_date, :required => true, :as => :string, :wrapper_html => { :class => "date" }
-    = f.input :end_date, :required => true, :as => :string, :wrapper_html => { :class => "date" }
+    /= f.input :start_date, :required => true, :as => :string, :wrapper_html => { :class => "date" }
+    /= f.input :end_date, :required => true, :as => :string, :wrapper_html => { :class => "date" }
+    = f.input :start_date, :required => true, :as => :string, :input_html => { :style => "width: 100px", :size => 25 }, :wrapper_html => { :class => "date" }
+    = f.input :end_date, :required => true, :as => :string, :size => 25, :input_html => { :style => "width: 100px", :size => 25 }, :wrapper_html => { :class => "date" }
     = f.input :program, :label => "Assign this event to a Program", :required => true
 
   

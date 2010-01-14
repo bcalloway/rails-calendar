@@ -8,7 +8,7 @@
     = stylesheet_link_tag 'reset', 'formtastic', 'admin', 'theme', :media => 'all', :cache => 'admin/all'
     = stylesheet_link_tag 'http://jqueryui.com/latest/themes/base/ui.all.css'
 
-    = javascript_include_tag :defaults, 'admin', 'http://jqueryui.com/latest/ui/ui.datepicker.js'
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js', 'admin', 'http://jqueryui.com/latest/ui/ui.datepicker.js'
       
   %body
     #wrapper
@@ -18,7 +18,6 @@
             = link_to 'View Site', '/', :target => '_blank'
           %h1 Administration
           .clear
-          = render :partial => '/layouts/admin_nav'
           
         #main
           #content

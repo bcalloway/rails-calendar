@@ -2,8 +2,6 @@ require 'test_helper'
 
 class CalendarsControllerTest < ActionController::TestCase
   
-  setup :activate_authlogic
-  
   context "On event EXPORT" do
     context "of a single event" do
       setup do
@@ -51,6 +49,15 @@ class CalendarsControllerTest < ActionController::TestCase
     should_respond_with_content_type 'text/calendar'
   end
   
+  context "When subscribing to the feed for a program" do
+    setup do
+      get :subscribe_selected, :id => Time.now.strftime('%Y-%m-%d'), :program => ["1"]
+    end
+    
+    should_respond_with :success      
+    should_respond_with_content_type 'text/calendar'
+  end
+  
   context "On GET for all calendars" do
     setup do
       get :calendar_list, :id => Time.now.strftime('%Y-%m-%d'), :program => ["1"]
@@ -71,27 +78,27 @@ class CalendarsControllerTest < ActionController::TestCase
     should_render_with_layout 'application'
   end
   
-  # context "On GET for calendar category" do
-  #   context "if a category is provided" do
-  #     setup do
-  #       get :filter, :id => '2009-11-20', :program => 1
-  #     end
-  #   
-  #     should_respond_with :success
-  #     should_render_template :calendar
-  #     should_render_with_layout 'application'
-  #   end
-  # 
-  #   context "if no specified category" do
-  #     setup do
-  #       get :filter, :id => '2009-11-20', :category => nil
-  #     end
-  #   
-  #     should_respond_with :success
-  #     should_render_template :calendar
-  #     should_render_with_layout 'application'
-  #   end
-  # end
+  context "On GET for calendar category" do
+    context "if a category is provided" do
+      setup do
+        get :filter, :id => '2009-11-20', :program => 1
+      end
+    
+      should_respond_with :success
+      should_render_template :calendar
+      should_render_with_layout 'application'
+    end
+  
+    context "if no specified category" do
+      setup do
+        get :filter, :id => '2009-11-20', :category => nil
+      end
+    
+      should_respond_with :success
+      should_render_template :calendar
+      should_render_with_layout 'application'
+    end
+  end
 
   context "On failed UPDATE" do
     setup do
@@ -123,8 +130,17 @@ class CalendarsControllerTest < ActionController::TestCase
     end
     
     should_respond_with :success
-    should_render_with_layout :comatose_admin
+    should_render_with_layout :admin
     should_render_template :index
+  end
+  
+  context "On SHOW" do
+    setup do
+      get :show, :id => Factory(:calendar).id
+    end
+    
+    should_respond_with :success
+    should_render_without_layout
   end
   
   context "On NEW" do
@@ -133,7 +149,7 @@ class CalendarsControllerTest < ActionController::TestCase
     end
 
     should_respond_with :success
-    should_render_with_layout :comatose_admin
+    should_render_with_layout :admin
     should_render_template :new
   end
   
@@ -159,7 +175,7 @@ class CalendarsControllerTest < ActionController::TestCase
     end
 
     should_respond_with :success
-    should_render_with_layout :comatose_admin
+    should_render_with_layout :admin
     should_render_template :edit
   end
 

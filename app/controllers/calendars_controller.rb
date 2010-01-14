@@ -84,7 +84,7 @@ class CalendarsController < ApplicationController
   # show all events for the chosen day
   def daily_list
     @events = Calendar.day_events(params[:id])
-    @daily_events = @events.group_by { |d| d.start_date }
+    @daily_events = @events.group_by { |d| d.end_date }
 
     respond_to do |format|
       format.html{ render :layout => 'application' }

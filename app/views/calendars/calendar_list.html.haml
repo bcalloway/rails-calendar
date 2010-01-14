@@ -1,10 +1,7 @@
-= render :partial => '/calendars/program_filter'
+= render 'program_filter'
 
 #calendar-list
-  - if params[:program]
-    = link_to image_tag("/images/ical.png") + "Subscribe to this iCal Feed", "webcal://#{request.domain(2)}/subscribe_selected/#{params[:id]}/#{params[:program].join(',')}"
-    %br
-  = link_to image_tag("/images/ical.png") + "Subscribe to entire iCal Feed", "webcal://#{request.domain(2)}/subscribe"
+  = render 'subscribe'
   
   %h1
     - dateheading = DateTime.strptime("#{params[:id]}T00:00:00+00:00")
