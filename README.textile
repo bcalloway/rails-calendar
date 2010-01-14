@@ -54,11 +54,11 @@ Be sure to vendor the following gems by inserting these lines into your environm
 To run the included tests, place this in config/environments/test.rb:
 <pre></code>
   config.gem  'mocha'
-  config.gem  'factory_girl', 
-              :lib => 'factory_girl', 
+  config.gem  'factory_girl',
+              :lib => 'factory_girl',
               :source => 'http://gemcutter.org'
-  config.gem  'shoulda', 
-              :lib => 'shoulda', 
+  config.gem  'shoulda',
+              :lib => 'shoulda',
               :source => 'http://gemcutter.org'
 
   require 'factory_girl'
@@ -86,23 +86,17 @@ h3. Routes
 Add these to routes.rb
 <pre><code>
   map.resources :programs
-  map.resources :calendars  
-  
-  # This routes to the admin portal for the calendar, where :id is the current date (e.g. 2010-01-14)
+  map.resources :calendars
+  ## This routes to the admin portal for the calendar, where :id is the current date (e.g. 2010-01-14)
   map.connect  '/admin/calendars/:id', :controller => 'calendars', :action => 'index'
-  
-  # This shows all events for the chosen day
+  ## This shows all events for the chosen day
   map.connect  '/daily_event/:id', :controller => 'calendars', :action => 'daily_list'
-  
-  # This shows a list of all events for the current month, where :id is the current date (e.g. 2010-01-14)
+  ## This shows a list of all events for the current month, where :id is the current date (e.g. 2010-01-14)
   map.connect '/calendar/:id', :controller => 'calendars', :action => 'calendar_list'
-  
-  # This shows the details of an individual calendar event
+  ## This shows the details of an individual calendar event
   map.connect '/calendars/:id', :controller => 'calendars', :action => 'show'
-  
-  # This shows a list of calendar events filtered by program
+  ## This shows a list of calendar events filtered by program
   map.connect '/filter/calendar/:id', :controller => 'calendars', :action => 'filter'
-
   map.connect '/subscribe', :controller => 'calendars', :action => 'subscribe'
   map.connect '/subscribe_selected/:id/:program', :controller => 'calendars', :action => 'subscribe_selected'
   map.connect '/events/:id', :controller => 'calendars', :action => 'export_events'
